@@ -116,12 +116,12 @@ def crct_avegINFP(rawEst,crctRatio,Rho_SD):
         temp_mu, temp_sig, temp_Rec, temp_tol = rawEst[i];
         cor_ratio = crctRatio[i]*Rho_SD;
         tempCV = temp_sig/temp_mu;
-        
-        tempC = temp_mu/cor_ratio + (1-np.exp(-tempCV))*(temp_Rec - temp_mu/cor_ratio)/(1+np.exp(-tempCV))
-        
-        mu_est      += temp_mu + (1 - cor_ratio)*tempC; # changed 0110
+
+        temp_mu = 1/temp_mu
+        tempC   = temp_mu + (1-np.exp(-tempCV))*(1/temp_Rec - temp_mu)/(1+np.exp(-tempCV))
+        mu_est  += 1/(temp_mu*cor_ratio**2 +  tempC*(1-cor_ratio))
         sigma_est   += np.sqrt((temp_sig**2 + (1 - cor_ratio)*(temp_mu-cor_ratio*tempC)**2)/cor_ratio);
-        rec_est     += 1/temp_Rec
+        rec_est     += temp_Rec
         totalrec    += temp_tol
     mu_est, sigma_est, rec_est, totalrec = mu_est/n, sigma_est/n, rec_est/n, totalrec/n;
     return(mu_est, sigma_est, rec_est,totalrec)
@@ -281,7 +281,7 @@ def EstRePlot(estResult,mu_InFC = 2.5,mu_Rec = 1):
         plt.xticks(np.arange(0,rawd[-1,0]+0.5,0.5))
         plt.legend(loc = 0,prop={'size':12})
 
-re = cmpEst(simu_K = 2,smpSize = 50,fntNum = 1000)
+re = cmpEst(mu_InFC = 1,mu_Rec = 1/2.5,simu_K = 100)
 EstRePlot(re)
 #re = singleSimu()
 #infRe = singleEst(re[0],re[1],re[2])
