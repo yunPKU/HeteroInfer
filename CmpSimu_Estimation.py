@@ -280,10 +280,15 @@ def EstRePlot(estResult,mu_InFC = 2.5,mu_Rec = 1):
         plt.ylabel('Estimation of $'+vabname+'$')
         plt.xticks(np.arange(0,rawd[-1,0]+0.5,0.5))
         plt.legend(loc = 0,prop={'size':12})
-
+# multiple simulaiton
 re = cmpEst(mu_InFC = 1,mu_Rec = 1/2.5,simu_K = 100)
 EstRePlot(re)
-#re = singleSimu()
-#infRe = singleEst(re[0],re[1],re[2])
-#simutree = re[3]
-#Phylo.draw(Phylo.read(StringIO(simutree),"newick")) 
+
+# single simulation
+#simuG = singleSimu(mu_InFC = 1,mu_Rec = 1/2.5)
+# view the phylogeny
+#simutree = simuG[3]  
+#Phylo.draw(Phylo.read(StringIO(simutree),"newick"))
+# parameter estimation based on the single simulation
+#infRe = singleEst(simuG[0],simuG[1],simuG[2])
+ 
