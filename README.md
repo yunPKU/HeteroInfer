@@ -21,8 +21,8 @@ res = SE.anaTree(filename)
 ```
 4. Composite simulation to show the performance of the proposed method
 ```
-rec = SE.cmpEst(mu_InFC, mu_Rec, smpSize, fntNum, simu_K)
-HI.EstRePlot(rec)
+res = SE.cmpEst(mu_InFC, mu_Rec, smpSize, fntNum, simu_K) # simulating trees under the given setting
+SE.EstRePlot(res) # plotting the estimates parameters with these trees
 ```
 The meaning and default values of these used parameters are as follows:
 
