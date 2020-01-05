@@ -7,21 +7,21 @@ The input is a dated phylogeny (or genealogy), where leaves correspond to pathog
 # Usage
 1. Import the main function and the related package 
 ```
-import HeteroInfer as HI
-import math as mt
+import simuEst as SE
+
 ```
 2. Simulate and analyze a single tree
 ```
-simuG   = HI.singleSimu(mu_InFC, mu_Rec, cv_InFC, smpSize, smpRatio, fntNum); # simulating a tree under the given setting 
-inferRe = HI.singleEst(simuG, back_ratio = [0.9,0.85,0.8], smpRatio = 0.9) # Analyzing the tree under the given setting 
+simuG   = SE.singleSimu(mu_InFC, mu_Rec, cv_InFC, smpSize, smpRatio, fntNum); # simulating a tree under the given setting 
+inferRe = SE.singleEst(simuG, back_ratio = [0.9,0.85,0.8], smpRatio = 0.9) # Analyzing the tree under the given setting 
 ```
 3. Analyze a tree file
 ```
-res = HI.anaTree(filename)
+res = SE.anaTree(filename)
 ```
 4. Composite simulation to show the performance of the proposed method
 ```
-rec = HI.cmpEst(mu_InFC, mu_Rec, smpSize, fntNum, simu_K)
+rec = SE.cmpEst(mu_InFC, mu_Rec, smpSize, fntNum, simu_K)
 HI.EstRePlot(rec)
 ```
 The meaning and default values of these used parameters are as follows:
