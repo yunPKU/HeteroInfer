@@ -13,7 +13,7 @@ import simuEst as SE
 2. Simulate and analyze a single tree
 ```
 simuG   = SE.singleSimu(mu_InFC, mu_Rec, cv_InFC, smpSize, smpRatio, fntNum); # simulating a tree under the given setting 
-inferRe = SE.singleEst(simuG, back_ratio = [0.9,0.85,0.8], smpRatio = 0.9) # Analyzing the tree under the given setting 
+inferRe = SE.singleEst(simuG, back_ratio, smpRatio) # Analyzing the tree under the given setting 
 ```
 3. Analyze a tree file
 ```
@@ -32,8 +32,10 @@ mu_InFC	  | μ       | the average transmission rate |	1
 mu_Rec	  | γ       | the rate of being diagnosis (or removal)        | 1/2.5
 cv_InFC	  | CV      | the coefficient of variation of the transmission rate | 1
 smpSize	  | n       | the number of being diagnosed at the stop of the simulation |100
-smpRatio	| ρ       | the sequencing ratio	| 0.9
+smpRatio	| ρ       | the sequencing ratio	| smpRatio = 0.9
 fntNum	  | N       | the size of susceptible individuals	| math.inf -- standing for infinite population size
-back_ratio| p       | the percentile for the lengths of the external branches |  [0.9,0.85,0.8]
+back_ratio| p       | the percentile for the lengths of the external branches | back_ratio = [0.9,0.85,0.8]
 simu_K    |         | the number of simulations | 100
 filename  |         | the txt file that contains the tree in the "Newick" format
+
+An example of using these functions are provied in the file of example.py
