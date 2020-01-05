@@ -38,4 +38,4 @@ back_ratio| p       | the percentile for the lengths of the external branches | 
 simu_K    |         | the number of simulations | 100
 filename  |         | the txt file that contains the tree in the "Newick" format
 
-An example of using these functions are provied in the file of example.py
+An example of using these functions are provied in the file of `example.py`
