@@ -11,12 +11,12 @@ import HeteroInfer as HI
 ```
 2. Simulate and analyze a single tree
 ```
-simuG = HI.singleSimu(mu_InFC, mu_Rec, cv_InFC, smpSize, smpRatio, fntNum); # simulating a tree under the given setting 
-inferRe 	= HI.singleEst(simuG, back_ratio = [0.9,0.85,0.8], smpRatio = 0.9) # Analyzing the tree under the given setting 
+simuG   = HI.singleSimu(mu_InFC, mu_Rec, cv_InFC, smpSize, smpRatio, fntNum); # simulating a tree under the given setting 
+inferRe = HI.singleEst(simuG, back_ratio = [0.9,0.85,0.8], smpRatio = 0.9) # Analyzing the tree under the given setting 
 ```
 The meaning and default values of these parameters are as follows:
 
-parameter	|meaning	|Default value
+parameter	| meaning	| Default value
 
 3. Analyze a tree file
 ```
