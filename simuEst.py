@@ -113,7 +113,7 @@ def crct_avegINFP(rawEst, crctRatio, Rho_SD):
     return(mu_est, sigma_est, rec_est,totalrec)
 
 def bckEst(transPairRec, hostLifeRec, censoring_flagRec, 
-           popSize, SampleSize, spl,back_ratio):
+           popSize, SampleSize, spl, back_ratio):
     # this function performs backward estimation for the SID model
     tptransPairRec = transPairRec.copy();
     tphostLifeRec = hostLifeRec.copy();
@@ -158,7 +158,7 @@ def singleSimu(mu_InFC = 2.5, mu_Rec = 1,     cv_InFC = 1,
    
     return(tptransPairRec,tphostLifeRec,tpcensoring_flagRec,simutree)
 
-def singleEst(simuTree, back_ratio = [0.9,0.85,0.8],smpRatio = 0.9):
+def singleEst(simuTree, back_ratio = [0.9,0.85,0.8], smpRatio = 0.9):
     tptransPairRec, tphostLifeRec, tpcensoring_flagRec = simuTree[0:3]
     re = [[]]*len(back_ratio);
     for i in range(len(back_ratio)):
@@ -255,7 +255,7 @@ def cmpEst(mu_InFC = 2.5, mu_Rec = 1, smpSize = 100,
     return(gamRe,muRe,roRe,sigRe,cvRe)
 
 
-def EstRePlot(estResult,mu_InFC = 2.5,mu_Rec = 1):
+def EstRePlot(estResult, mu_InFC = 2.5, mu_Rec = 1):
     nameset = ['\gamma','\mu','R_0','\sigma','CV']
     lb_value = [mu_Rec,mu_InFC,mu_InFC/mu_Rec,estResult[0][0][0],estResult[0][0][0]]
     ub_value = [mu_Rec,mu_InFC,mu_InFC/mu_Rec,estResult[0][-1][0]*mu_InFC,estResult[0][-1][0]]
@@ -334,7 +334,7 @@ def treeEst(a):
     hostLife[:,2] = hostLife[:,2] + tailInfor;
 #    file.close()
     return(tranPairEst,hostLife)
-def trnsID(transPairRec,hostLifeRec):
+def trnsID(transPairRec, hostLifeRec):
     b = np.argsort(hostLifeRec[:,1]);
     stdTras = np.zeros((89,3));
     stdHostLife = np.zeros((90,3));
@@ -350,7 +350,7 @@ def trnsID(transPairRec,hostLifeRec):
     stdHostLife = stdHostLife[b,:]
     return(stdTras,stdHostLife)
 
-def anaTree(filename,back_ratio = [0.9,0.85,0.8],spl = 0.9):
+def anaTree(filename, back_ratio = [0.9,0.85,0.8], spl = 0.9):
     tempstr = open(filename,'r').read()  
     tempre = treeEst(tempstr)
     transPairRec,hostLifeRec = trnsID(tempre[0],tempre[1])
